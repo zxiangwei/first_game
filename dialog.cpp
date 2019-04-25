@@ -19,6 +19,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <QDir>
 using namespace std;
 
 vector<int> sscore;
@@ -26,7 +27,7 @@ vector<int> sscore;
 QFile ff1("D:\\QT\\last_homework\\save1.txt");
 QFile ff2("D:\\QT\\last_homework\\log.txt");
 QFile ff3("D:\\QT\\last_homework\\save2.txt");
-
+int r=1;
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -37,7 +38,29 @@ Dialog::Dialog(QWidget *parent) :
     //f2.open("log.txt",ios::in|ios::out);//记录分数
     //if(f1.eof())    this->close();
     //if(f2.eof())    this->close();
+    QDir *folder = new QDir;
+    //判断创建文件夹是否存在
+    bool exist = folder->exists("D:\\QT\\last_homework");
+    if(exist&&r==1)
+    {
+        QMessageBox::warning(this,tr("创建文件夹"),tr("文件夹已经存在！"));
+        r=0;
+    }
+    if(!exist){
+        //创建文件夹
+        bool ok = folder->mkdir("D:\\QT\\last_homework");
+    }
+        //判断是否成功
+           /*if(ok)
+           {
+               QMessageBox::warning(this,tr("创建文件夹"),tr("文件夹创建成功！"));
+           }
+           else
+           {
+               QMessageBox::warning(this,tr("创建文件夹"),tr("文件夹创建失败！"));
+           }*/
 }
+
 
 Dialog::~Dialog()
 {
