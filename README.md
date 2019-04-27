@@ -1,6 +1,8 @@
 # first_game
 first_game
 内容：随机给出算术题，答对得分，内有存档和读档系统。
+
+
 目录结构：
 3个头文件:
 Dialog.h
